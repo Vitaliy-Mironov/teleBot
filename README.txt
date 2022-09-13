@@ -1,1 +1,1 @@
-Это "гараж" в котором я собираю телеграм-бота.
+Here I am building a telegram bot
