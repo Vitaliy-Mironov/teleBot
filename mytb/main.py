@@ -5,12 +5,6 @@ import mytb as tb
 bot = telebot.TeleBot('5628150286:AAF2Ok2uLCXCChDSaDLzrBEgE3NFLc2DlJQ')
 
 
-def text_variants(text):
-    """ Приведение введённого пользователем текста к нижнему регистру,
-    для упрощения обработки. """
-    return text.lower()
-
-
 @bot.message_handler(commands=['start'])
 def start(message):
     bot.send_message(message.chat.id,
@@ -30,15 +24,12 @@ def help(message):
                      reply_markup=markup)
 
 
-usertext_photo = ['photo', 'foto', 'фото', 'фотография', 'фотка']
-
-
 @bot.message_handler(content_types=['text'])
 def get_user_text(message):
-    if text_variants(message.text) == 'id':
+    if tb.text_variants(message.text) == 'id':
         bot.send_message(message.chat.id, f'Твой ID: {message.from_user.id}',
                          parse_mode='html')
-    elif text_variants(message.text) in usertext_photo:
+    elif tb.text_variants(message.text) in tb.usertext_photo:
         photo = open('files/example.jpg', 'rb')
         bot.send_photo(message.chat.id, photo)
         bot.send_message(message.chat.id,
