@@ -32,7 +32,7 @@ def get_user_text(message):
         bot.send_message(message.chat.id, f'Твой ID: {message.from_user.id}',
                          parse_mode='html')
     elif df.text_variants(message.text) in inputs.usertext_photo:
-        photo = open('teleBot/mytb/files/example.jpg', 'rb')
+        photo = open('files/example.jpg', 'rb')
         bot.send_photo(message.chat.id, photo)
         bot.send_message(message.chat.id,
                          f'Это пример изображения. На фото - разработчик \
